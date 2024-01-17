@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyA9K_BGtP0K5F6gb0poQx_DuS6CPLr7XRA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>379661837868</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.quizz.smartapp</string>
+	<key>PROJECT_ID</key>
+	<string>smartapp-a327e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>smartapp-a327e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:379661837868:ios:c3507fd397d50af88b5389</string>
+	<key>DATABASE_URL</key>
+	<string>https://smartapp-a327e-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
