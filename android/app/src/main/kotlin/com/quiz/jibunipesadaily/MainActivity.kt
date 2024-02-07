@@ -1,4 +1,4 @@
-package com.example.smartapp
+package com.quiz.SmartAppdaily
 
 import io.flutter.embedding.android.FlutterActivity
 

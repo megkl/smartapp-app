@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Quiz Flutter</string>
+
+    <string name="facebook_app_id">595237267773534</string>
+    <string name="fb_login_protocol_scheme">fb595237267773534</string>
+
+
+
+</resources>

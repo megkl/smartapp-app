@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "379661837868",
+    "firebase_url": "https://smartapp-a327e-default-rtdb.firebaseio.com",
+    "project_id": "smartapp-a327e",
+    "storage_bucket": "smartapp-a327e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:379661837868:android:5992e44bbdbec8208b5389",
+        "android_client_info": {
+          "package_name": "com.quiz.smartapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6ZKnHVkaPkOOne7RkDlvSX7BxosztxfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

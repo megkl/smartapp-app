@@ -103,28 +103,16 @@ class resultState extends State<Result> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+                        SizedBox(height: 40,),
             Container(
               height: MediaQuery.of(context).size.height * 0.2,
               child: Center(
                 child: Image.asset(
-                  'assets/images/jibupesa.png',
-                  height: 100,
+                 'assets/images/color_logo.png',width: 250,
                 ),
               ),
             ),
-             RichText(
-                    textAlign: TextAlign.center,
-                        text: TextSpan(children: <TextSpan>[
-                      TextSpan(
-                          text: 'Smart',
-                          style: TextStyle(color: orangeTheme, fontSize: 24, fontWeight: FontWeight.bold)),
-                      TextSpan(
-                          text: 'App',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, color: selection, fontSize: 24))
-                            
-                        ]
-                        )),
+             
                         SizedBox(height: 20,),
                  
             Container(
@@ -211,7 +199,7 @@ class resultState extends State<Result> {
                         Navigator.pop(context);
                                          },
                                        
-                                         child: Text('Back to Menu')),
+                                         child: Text('Back to Menu', style: TextStyle(color: white),)),
                      ),
                     
                  

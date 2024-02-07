@@ -62,23 +62,11 @@ class Practice extends StatelessWidget {
                     height: size.height / 5,
                     child: Center(
                       child: Image.asset(
-                        'assets/images/smarta_logomain.png',
+                        'assets/images/color_logo.png',width: 300,
                       ),
                     ),
                   ),
-                  RichText(
-                    textAlign: TextAlign.center,
-                        text: TextSpan(children: <TextSpan>[
-                      TextSpan(
-                          text: 'Smart',
-                          style: TextStyle(color: orangeTheme, fontSize: 24, fontWeight: FontWeight.bold)),
-                      TextSpan(
-                          text: 'App',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, color: selection, fontSize: 24))
-                            
-                        ]
-                        )),
+                  
                   Padding(
                     padding: const EdgeInsets.only(),
                     child: Container(
@@ -143,7 +131,7 @@ class Practice extends StatelessWidget {
                                       PlayActivity(cls: Constant.lblPractice),
                                 ));
                           },
-                          child: Text('Start >>', style: TextStyle(fontSize: 25),)),
+                          child: Text('Start >>', style: TextStyle(fontSize: 25, color: white),)),
                     ),
                   ),
                 ])),

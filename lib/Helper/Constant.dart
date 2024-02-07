@@ -25,16 +25,12 @@ const String Main_URL = "https://quiz.smartapp-gaming.com/";
 String BASE_URL = Main_URL.toString() + "/api-v2.php";
 
 const String PAYPAL_URL = "https://smartapp-gaming.com/payment_api.php?";
-//const String PAYPAL_URL = "http://10.0.2.2/payment_api.php?";
 
 const String PAYPAL_RESPONSE_URL = "https://smartapp-gaming.com/success.php";
-//const String PAYPAL_RESPONSE_URL = "http://10.0.2.2/success.php";
 
 const String CARD_URL = "https://smartapp-gaming.com/flutterwave_api.php?";
-//const String CARD_URL = "http://10.0.2.2/flutterwave_api.php?";
 
 const String CARD_SUCCESS = "https://smartapp-gaming.com/flutterwave_success.php?";
-//const String CARD_SUCCESS = "http://10.0.2.2/flutterwave_success.php?";
 
 const String de_active_msg = "Your Account is deactivate by admin";
 const String act_verify_1 =
