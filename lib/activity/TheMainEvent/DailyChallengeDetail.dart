@@ -6,6 +6,8 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cron/cron.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_overlay_window/flutter_overlay_window.dart';
 import 'package:intl/intl.dart';
 import 'package:smartapp/Helper/Color.dart';
 import 'package:smartapp/Helper/Constant.dart';
@@ -33,7 +35,6 @@ class DailyEventDetail extends StatefulWidget {
   final MainEventRound? selectedDailyEvent;
   final StreamSubscription<ReceivedAction>?
       notificationsActionStreamSubscription;
-
   const DailyEventDetail(
       {Key? key,
       this.sDate,
@@ -62,6 +63,7 @@ class DailyEventDetailState extends State<DailyEventDetail> {
   DailyEventDetailState({this.sDate});
   Cron? cron = Cron();
   ScheduledTask? scheduledTask;
+late OverlayEntry _overlayEntry;
 
   @override
   void initState() {
@@ -243,11 +245,12 @@ class DailyEventDetailState extends State<DailyEventDetail> {
       }
     }
 
-    String counterText() {
+     String counterText() {
       if (showTimer!) {
-        if (difference <= 20) {
+        if (difference <= 600) {
           return "$difference secs";
-        } else {
+        }
+         else {
           return "";
         }
       } else if (ispaid! && selectedDailyEvent!.date == dttoday) {
@@ -407,7 +410,7 @@ class DailyEventDetailState extends State<DailyEventDetail> {
       } else {
         return ElevatedButton(
             style: ElevatedButton.styleFrom(
-                backgroundColor: lightPink,
+                backgroundColor: selection,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -1126,6 +1129,7 @@ class DailyEventDetailState extends State<DailyEventDetail> {
         selectedDailyEvent!.date == dttoday) {
       showTimer = true;
       print("updateui start 0 >>$difference");
+      
       int _start = 20;
       timer = new Timer.periodic(
         Duration(seconds: 1),
@@ -1497,7 +1501,7 @@ class DailyEventDetailState extends State<DailyEventDetail> {
   @override
   void dispose() {
     // TODO: implement dispose
-    
+     _overlayEntry.remove();
     if (timer != null) timer!.cancel();
     super.dispose();
   }
@@ -1554,8 +1558,8 @@ class DailyEventDetailState extends State<DailyEventDetail> {
             channelKey: 'Notification1',
             title: 'SmartApp',
             body: 'Reminder to join daily event',
-            bigPicture: 'asset://assets/images/jibupesa.png',
-            // largeIcon: 'assets/images/jibupesa.png',
+            bigPicture: 'asset://assets/images/Android2.png',
+            // largeIcon: 'assets/images/Android2.png',
             notificationLayout: NotificationLayout.BigPicture),
         schedule: NotificationInterval(
             interval: 60, timeZone: timezom, repeats: true, allowWhileIdle: true),
@@ -1585,8 +1589,8 @@ class DailyEventDetailState extends State<DailyEventDetail> {
             channelKey: 'Notification2',
             title: 'SmartApp',
             body: 'Reminder to join daily event',
-            bigPicture: 'asset://assets/images/jibupesa.png',
-            // largeIcon: 'assets/images/jibupesa.png',
+            bigPicture: 'asset://assets/images/Android2.png',
+            // largeIcon: 'assets/images/Android2.png',
             notificationLayout: NotificationLayout.BigPicture),
         schedule: NotificationInterval(
             interval: 60, timeZone: timezom, repeats: true, allowWhileIdle: true),
@@ -1615,8 +1619,8 @@ class DailyEventDetailState extends State<DailyEventDetail> {
             channelKey: 'Notification3',
             title: 'SmartApp',
             body: 'One minute to daily event',
-            bigPicture: 'asset://assets/images/jibupesa.png',
-            // largeIcon: 'assets/images/jibupesa.png',
+            bigPicture: 'asset://assets/images/Android2.png',
+            // largeIcon: 'assets/images/Android2.png',
             notificationLayout: NotificationLayout.BigPicture),
         schedule: NotificationInterval(
             interval: 60, timeZone: timezom, repeats: false),
@@ -1631,5 +1635,29 @@ class DailyEventDetailState extends State<DailyEventDetail> {
       // });
       //when user top on notification this listener will work and user will be navigated to notification page
     });
+  }
+  void _initOverlay() async {
+
+    // Create overlay entry
+    _overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        top: 0,
+        left: 0,
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          color: Colors.white.withOpacity(0.5), // Overlay color
+          child: Center(
+            child: Text(
+              'Daily Event is about to start',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+      ),
+    );
+
+    // Show overlay
+    Overlay.of(context).insert(_overlayEntry);
   }
   }

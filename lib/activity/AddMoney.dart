@@ -171,7 +171,7 @@ class StateAdd extends State<AddMoney> {
                 width: double.maxFinite,
                 margin: EdgeInsets.all(30),
                 child: CupertinoButton(
-                  color: btnColor,
+                  color: selection,
                   borderRadius: BorderRadius.circular(10.0),
                   child: Text(
                     'Add Money',

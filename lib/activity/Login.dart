@@ -161,13 +161,13 @@ class Animated_LoginState extends State<Login> with TickerProviderStateMixin {
                     borderRadius: BorderRadius.circular(50),
                     child: Container(
                       child: Image(
-                        image: AssetImage("assets/images/jibupesa.png"),
-                        height: (270 / 896) * size.height * 0.5,
+                        image: AssetImage("assets/images/color_logo.png"),
+                        height: (270 / 896) * size.height * 0.4,
                       ),
                     ),
                   ),
                   SizedBox(
-                    height: heightSpace,
+                    height: 60,
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 20),
@@ -369,49 +369,52 @@ class Animated_LoginState extends State<Login> with TickerProviderStateMixin {
   }
   buildPhoneTextField() {
     return Row(
-        children: <Widget>[
-          Container(
-            width: 120,
-            child: CountryListPick(
-                // To disable option set to false
-                theme: CountryTheme(
-                  alphabetSelectedBackgroundColor: primary,
-                  isShowFlag: true,
-                  isShowTitle: false,
-                  isShowCode: true,
-                  isDownIcon: false,
-                  showEnglishName: true,
-                ),
-                initialSelection: '+254',
-                onChanged: (CountryCode? code) {
-                  cCode = code!.dialCode!;
-                },
-                useUiOverlay: true,
-                useSafeArea: false),
-          ),
-          Expanded(
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 10),
-              height: 50,
-              child: TextFormField(
-                  controller: phoneController,
-                  keyboardType: TextInputType.number,
-                  decoration:  InputDecoration(
-                    border:OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(
-                  color: primary,
-                ),
+  children: <Widget>[
+    Container(
+      width: MediaQuery.of(context).size.width * 0.3,
+      child: CountryListPick(
+        // To disable option set to false
+        theme: CountryTheme(
+          alphabetSelectedBackgroundColor: primary,
+          isShowFlag: true,
+          isShowTitle: false,
+          isShowCode: true,
+          isDownIcon: false,
+          showEnglishName: true,
+        ),
+        initialSelection: '+254',
+        onChanged: (CountryCode? code) {
+          cCode = code!.dialCode!;
+        },
+        useUiOverlay: true,
+        useSafeArea: false,
+      ),
+    ),
+    Expanded(
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 10),
+        height: 50,
+        child: TextFormField(
+          controller: phoneController,
+          keyboardType: TextInputType.number,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(
+                color: primary,
               ),
-                    filled: false,
-                    labelText: "Enter Mobile Number",
-                    hintText: "712******",
-                    floatingLabelBehavior: FloatingLabelBehavior.never,
-                  )),
             ),
-          )
-        ],
-    );
+            filled: false,
+            labelText: "Enter Mobile Number",
+            hintText: "712******",
+            floatingLabelBehavior: FloatingLabelBehavior.never,
+          ),
+        ),
+      ),
+    )
+  ],
+);
+
   }
 
   showPhoneSignIn() {

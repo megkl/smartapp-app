@@ -4,6 +4,7 @@ class Question {
   int? id;
   String? question,main_event_id,time_id,group_event_id,event_id,
       note,
+      questionType,
       level,
       trueAns,
       image,
@@ -25,6 +26,7 @@ class Question {
       this.level,
       this.trueAns,
       this.note,
+      this.questionType,
       this.answer,
       this.langId,
       this.optiona,
@@ -57,6 +59,7 @@ class Question {
         /*level: parsedJson[LEVEL1],
         langId: parsedJson[LANG_ID],*/
         note: parsedJson[NOTE],
+        questionType: parsedJson[QUESTION_TYPE],
         answer: parsedJson[ANSWER],
         trueAns: "",
         optiona: parsedJson[OPTION_A],

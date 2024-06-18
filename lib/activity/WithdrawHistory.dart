@@ -32,8 +32,9 @@ class _WithdrawHistoryState extends State<WithdrawHistory> {
     double heightSpace = size.width / 10;
     return Scaffold(
         appBar: AppBar(
-          title: Text("Withdraw History"),
+          title: Text("Withdraw History", style: TextStyle(color: white),),
           //brightness: Brightness.dark,
+          foregroundColor: white,
           centerTitle: true,
           backgroundColor: primary,
           elevation: 0,
@@ -49,7 +50,7 @@ class _WithdrawHistoryState extends State<WithdrawHistory> {
                   if(snapshot.hasData || snapshot.connectionState == ConnectionState.done){
                     // print(snapshot.data[0].details + snapshot.data[0].date);
 
-                    if(snapshot.data!="No data"){
+                    if(snapshot.data != null){
                       return  ListView.builder(
                           itemCount: snapshot.data.length,
                           scrollDirection: Axis.vertical,

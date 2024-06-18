@@ -159,7 +159,7 @@ class MainActivityState extends State<HomeActivity> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Image.asset(
-                        'assets/images/home.png',
+                        'assets/images/home 2.png',
                       ),
                     ),
                     Align(

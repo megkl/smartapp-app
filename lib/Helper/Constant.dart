@@ -210,6 +210,7 @@ const String SUBCAT_NAME = "subcategory_name";
 const String LANG_ID = "language_id";
 const String MAIN_CAT_ID = "maincat_id";
 const String NOTE = "note";
+const String QUESTION_TYPE = "question_type";
 const String QUESTION = "question";
 const String LEVEL1 = "level";
 const String ANSWER = "answer";

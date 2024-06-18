@@ -408,7 +408,7 @@ class CustomInputField extends StatelessWidget {
 }
 
 getImagePlaceHolder(String imageurl,String title){
-  if(imageurl!=null){
+  if(imageurl.isNotEmpty){
     return Image.network(
       imageurl,
       fit: BoxFit.cover,
@@ -421,7 +421,7 @@ getImagePlaceHolder(String imageurl,String title){
       Container(
         width: 100,
         height: 100,
-        color: lightPink,
+        color: selection,
         child:  Text("${getLetters(title).toUpperCase()}",
             style: kTextHeadBoldStyle.apply(color: orangeTheme)),
 

@@ -307,7 +307,8 @@ class MainEventDetailState extends State<MainEventDetail> {
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 30)),
                                     onPressed: () {
-                                      (!isLate! || (isLate! && ispaid!))
+                                     // (!isLate! || (isLate! && ispaid!))
+                                      !isLate!
                                           ? GoToPayPage(
                                               widget.selectedmainevent!)
                                           : ScaffoldMessenger.of(context)

@@ -40,6 +40,7 @@ class playState extends State<PlayActivity>
   int queIndex = 0, level_coin = 6, correctQuestion = 0, inCorrectQuestion = 0;
   String? curQue,
       curnote,
+      questionType,
       optionA,
       optionB,
       optionC,
@@ -160,6 +161,8 @@ class playState extends State<PlayActivity>
                         child: Column(
                           children: <Widget>[
                             getCoins(),
+                          questionType == 'Silver' ?  Image.asset('assets/images/silver-star.png', width: 60, height: 60,):
+                           questionType == 'Gold' ?  Image.asset('assets/images/gold-star.png', width: 60, height: 60,):Container(),
                         //     Container(
                         //       // height: 50,
                         //       decoration: BoxDecoration(
@@ -384,6 +387,7 @@ class playState extends State<PlayActivity>
       question = questionList[queIndex];
       curQue = question!.question!;
       curnote = question!.note ?? '';
+      questionType = question!.questionType ?? '';
       visibilityOption!.clear();
 
       _isFifty = false;
@@ -819,7 +823,7 @@ class playState extends State<PlayActivity>
   Widget GetQueView() {
     return Text(
       curQue!,
-      style: Theme.of(context).textTheme.titleLarge?.copyWith(color: primary),
+      style: questionType == 'Silver' ? Theme.of(context).textTheme.titleLarge?.copyWith(color: white) : questionType == 'Gold' ? Theme.of(context).textTheme.titleLarge?.copyWith(color: white) : Theme.of(context).textTheme.titleLarge?.copyWith(color: primary),
       textAlign: TextAlign.center,
     );
   }
@@ -840,7 +844,145 @@ class playState extends State<PlayActivity>
   }
 
   Widget questionLayout() {
-    return Padding(
+    return 
+     questionType == 'silver' ?
+     Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color(0xFFDA9100), // silver color
+                   Color(0xFFDA9100),
+                ],
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 5,
+                  color: Colors.black26,
+                  offset: Offset(1, 2),
+                ),
+              ],
+            ),
+            width: MediaQuery.of(context).size.width * 0.95,
+            height: 230,
+            alignment: Alignment.center,
+            child: question!.image!.isNotEmpty
+                ? ClipRRect(
+                    child: PhotoView(
+                      imageProvider: NetworkImage(question!.image!),
+                      maxScale: PhotoViewComputedScale.covered * 2.0,
+                      minScale: PhotoViewComputedScale.covered,
+                      initialScale: PhotoViewComputedScale.covered,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                  )
+                : getQuesText(),
+          ),
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Card(
+                color: white, // silver color
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                margin: EdgeInsets.symmetric(horizontal: 16.0),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: 
+                      Text(
+                        'This is a silver question',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: selection,
+                        ),
+                     
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    )
+:questionType == 'Gold' ?
+     Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color(0xFFDA9100), // silver color
+                   Color(0xFFDA9100),
+                ],
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 5,
+                  color: Colors.black26,
+                  offset: Offset(1, 2),
+                ),
+              ],
+            ),
+            width: MediaQuery.of(context).size.width * 0.95,
+            height: 230,
+            alignment: Alignment.center,
+            child: question!.image!.isNotEmpty
+                ? ClipRRect(
+                    child: PhotoView(
+                      imageProvider: NetworkImage(question!.image!),
+                      maxScale: PhotoViewComputedScale.covered * 2.0,
+                      minScale: PhotoViewComputedScale.covered,
+                      initialScale: PhotoViewComputedScale.covered,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                  )
+                : getQuesText(),
+          ),
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Card(
+                color: white, // silver color
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                margin: EdgeInsets.symmetric(horizontal: 16.0),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: 
+                      Text(
+                        'This is a Gold question',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: selection,
+                        ),
+                     
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    )
+:
+     Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
           decoration: BoxDecoration(
@@ -868,7 +1010,7 @@ class playState extends State<PlayActivity>
               : getQuesText()),
     );
   }
-
+     
   Widget getQueNo() {
     int que = queIndex;
     ++que;

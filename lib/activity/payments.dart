@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:smartapp/Helper/Color.dart';
 import 'package:smartapp/Helper/Constant.dart';
 import 'package:smartapp/Helper/Session.dart';
@@ -87,7 +88,7 @@ class _AddPaymentEntry extends State<AddPaymentEntry> {
                       // ),
 
                       Container(
-                        height: 100,
+                        height: 70,
                         decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
                           color: orangeTheme,
@@ -96,10 +97,9 @@ class _AddPaymentEntry extends State<AddPaymentEntry> {
                         ),
                         child: Center(
                           child: AutoSizeText(
-                            "BECOME A MEMBER TO CONTEST & WIN, \n BUY GCOINS NOW",
-                            maxLines: 2,
+                            "BUY GCOINS NOW TO CONTEST AND WIN",
                             textAlign: TextAlign.center,
-                            style: kTextHeadBoldStyle.apply(color: primary, fontSizeFactor: 0.8),
+                            style: kTextNormalBoldStyle.apply(color: primary, fontSizeFactor: 1.1),
                           ),
                         ),
                       ),
@@ -110,10 +110,9 @@ class _AddPaymentEntry extends State<AddPaymentEntry> {
                       ),
 
                       AutoSizeText(
-                        "Select amount",
-                        maxLines: 2,
+                        "** Select amount **",
                         textAlign: TextAlign.center,
-                        style: kTextHeadBoldStyle.apply(color: lovandar),
+                        style: kTextNormalBoldStyle.apply(color: lovandar, fontSizeFactor: 1.1),
                       ),
                      // Spacer(),
                       SizedBox(
@@ -137,7 +136,7 @@ class _AddPaymentEntry extends State<AddPaymentEntry> {
                       ),
 
                        SizedBox(
-                        height: heightSpace,
+                        height: 10,
                       ),
 
                       ElevatedButton(
@@ -174,7 +173,8 @@ class _AddPaymentEntry extends State<AddPaymentEntry> {
       decoration: BoxDecoration(
       color: lovandar,
         borderRadius: BorderRadius.circular(30)),
-      width: 280,
+      width: 340,
+      height: 70,
       child: ElevatedButton(
         onPressed: () async {
           var callbackData = await showPlayOptions("$jcoin");
@@ -193,11 +193,14 @@ class _AddPaymentEntry extends State<AddPaymentEntry> {
         style:
             ElevatedButton.styleFrom(shape: StadiumBorder(), backgroundColor: lovandar),
         child: Padding(
-          padding: EdgeInsets.all(10),
-          child: Column(
+          padding: EdgeInsets.all(1),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("$amount Ksh",
-                  style: kTextNormalBoldStyle.apply(color: Colors.white)),
+                 LottieBuilder.asset("assets/lottie/coins_grow.json", animate: true,
+                                  height: 30),
+              Text("Ksh $amount ------>",
+                  style: kTextNormalBoldStyle.apply(color: Colors.white, fontSizeFactor: 1.1)),
               Text(
                 '$jcoin GCoins',
                 style: kTextNormalStyle.apply(color: Colors.white),
