@@ -98,7 +98,7 @@ class PayPalWebview extends State<PaypalWebviewActivity> {
             InAppWebView(
               key: webViewKey,
               // contextMenu: contextMenu,
-              initialUrlRequest: URLRequest(url: Uri.parse(mainurl ?? '')),
+              initialUrlRequest: URLRequest(url: WebUri(mainurl??'')),
               // initialFile: "assets/index.html",
               initialUserScripts: UnmodifiableListView<UserScript>([]),
               initialOptions: options,

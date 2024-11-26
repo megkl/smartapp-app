@@ -4,9 +4,10 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   awesome_notifications
-  connectivity_plus_windows
+  connectivity_plus
   firebase_auth
   firebase_core
+  flutter_inappwebview_windows
   url_launcher_windows
 )
 

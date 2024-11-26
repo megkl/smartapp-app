@@ -5,12 +5,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:smartapp/Helper/Constant.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smartapp/Helper/StringRes.dart';
-import 'package:smartapp/Helper/NotificationHandler.dart';
 import 'package:smartapp/Helper/message_dialog.dart';
 import 'package:smartapp/Model/GroupModel.dart';
 import 'package:smartapp/Model/MainEvent.dart';
@@ -88,8 +86,8 @@ var db = new DatabaseHelper();
 
 class MainActivityState extends State<HomeActivity> {
   // FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
-  static FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      new FlutterLocalNotificationsPlugin();
+  // static FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+  //     new FlutterLocalNotificationsPlugin();
   bool _isLoading = true;
   bool showWidget = false;
   String languageText = '';
@@ -553,10 +551,7 @@ class MainActivityState extends State<HomeActivity> {
   Future<void> SetUserData() async {
     User currentUser = FirebaseAuth.instance.currentUser!;
 
-    if (currentUser != null)
-      firebaseuserid = currentUser.uid;
-    else
-      firebaseuserid = await getPrefrence(FIR_ID);
+    firebaseuserid = currentUser.uid;
 
     utype = await getPrefrence(LOGIN_TYPE);
     uname = await getPrefrence(NAME);
@@ -605,14 +600,14 @@ class MainActivityState extends State<HomeActivity> {
   }
 
   void firebaseCloudMessaging_Listeners() {
-    var initializationSettingsAndroid =
-        new AndroidInitializationSettings('@mipmap/ic_launcher');
-    var initializationSettingsIOS = new IOSInitializationSettings(
-        onDidReceiveLocalNotification: onDidReceiveLocalNotification);
-    var initializationSettings = new InitializationSettings(
-        android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
-    flutterLocalNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: onSelectNotification);
+    // var initializationSettingsAndroid =
+    //     new AndroidInitializationSettings('@mipmap/ic_launcher');
+    //var initializationSettingsIOS = new IOSInitializationSettings(
+    //     onDidReceiveLocalNotification: onDidReceiveLocalNotification);
+    // var initializationSettings = new InitializationSettings(
+    //     android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+    // flutterLocalNotificationsPlugin.initialize(initializationSettings,
+    //     onSelectNotification: onSelectNotification);
 
     if (Platform.isIOS) {
       FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
@@ -749,45 +744,44 @@ class MainActivityState extends State<HomeActivity> {
         }
       }
 
-      if (body == null) addnotification = false;
+      //if (body == null) addnotification = false;
 
-      if (addnotification) {
-        if (image != null && image.isNotEmpty) {
-          var bigPicturePath = await _downloadAndSaveImage(image, 'bigPicture');
-          var bigPictureStyleInformation = BigPictureStyleInformation(
-              FilePathAndroidBitmap(bigPicturePath),
-              hideExpandedLargeIcon: true,
-              contentTitle: title,
-              htmlFormatContentTitle: true,
-              summaryText: title,
-              htmlFormatSummaryText: true);
-          var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-              'big text channel id',
-              'big text channel name',
-              'big text channel description',
-              //  largeIcon: bigPicturePath,
-              // largeIconBitmapSource: BitmapSource.FilePath,
-              //  style: AndroidNotificationStyle.BigPicture,
-              styleInformation: bigPictureStyleInformation);
-          var platformChannelSpecifics =
-              NotificationDetails(android: androidPlatformChannelSpecifics);
-          await flutterLocalNotificationsPlugin.show(
-              0, '$title', '$body', platformChannelSpecifics,
-              payload: payload);
-        } else {
-          var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-            'big text channel id',
-            'big text channel name',
-            'big text channel description',
-          );
+      // if (addnotification) {
+      //   if (image != null && image.isNotEmpty) {
+      //     var bigPicturePath = await _downloadAndSaveImage(image, 'bigPicture');
+      //     var bigPictureStyleInformation = BigPictureStyleInformation(
+      //         FilePathAndroidBitmap(bigPicturePath),
+      //         hideExpandedLargeIcon: true,
+      //         contentTitle: title,
+      //         htmlFormatContentTitle: true,
+      //         summaryText: title,
+      //         htmlFormatSummaryText: true);
+      //     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
+      //         'big text channel id',
+      //         'big text channel name',
+      //         //  largeIcon: bigPicturePath,
+      //         // largeIconBitmapSource: BitmapSource.FilePath,
+      //         //  style: AndroidNotificationStyle.BigPicture,
+      //         styleInformation: bigPictureStyleInformation);
+      //     var platformChannelSpecifics =
+      //         NotificationDetails(android: androidPlatformChannelSpecifics);
+      //     await flutterLocalNotificationsPlugin.show(
+      //         0, '$title', '$body', platformChannelSpecifics,
+      //         payload: payload);
+      //   } else {
+      //     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
+      //       'big text channel id',
+      //       'big text channel name',
+      //     );
 
-          var iOSPlatformChannelSpecifics = IOSNotificationDetails();
-          var platformChannelSpecifics =
-              NotificationDetails(android: androidPlatformChannelSpecifics);
-          await flutterLocalNotificationsPlugin
-              .show(0, title, body, platformChannelSpecifics, payload: payload);
-        }
-      }
+      //     //var iOSPlatformChannelSpecifics = IOSNotificationDetails();
+      //     var platformChannelSpecifics =
+      //         NotificationDetails(android: androidPlatformChannelSpecifics);
+      //     await flutterLocalNotificationsPlugin
+      //         .show(0, title, body, platformChannelSpecifics, payload: payload);
+      //   }
+      
+      //}
       //print('on message $data');
     }
   }
@@ -1843,11 +1837,6 @@ class _SettingDialogState extends State<SettingDialog> {
     timermusic = (await getPrefrenceBool(TimerSound))!;
     othersound = (await getPrefrenceBool(OtherSound))!;
     eventnotification = (await getPrefrenceBool(EventNotification))!;
-
-    if (bgmusic == null) bgmusic = false;
-    if (timermusic == null) timermusic = true;
-    if (othersound == null) othersound = true;
-    if (eventnotification == null) eventnotification = true;
 
     if (this.mounted) {
       setState(() {});

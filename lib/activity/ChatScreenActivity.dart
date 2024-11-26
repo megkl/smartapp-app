@@ -87,9 +87,7 @@ class ChatScreenState extends State<ChatScreenActivity> {
 
     Future<void> SetUserData() async {
         User? currentUser = FirebaseAuth.instance.currentUser!;
-        if (currentUser != null) firebaseuserid = currentUser.uid;
-        else
-            firebaseuserid=(await getPrefrence(FIR_ID))!;
+        firebaseuserid = currentUser.uid;
 
         utype = (await getPrefrence(LOGIN_TYPE))!;
         uname = (await getPrefrence(NAME))!;

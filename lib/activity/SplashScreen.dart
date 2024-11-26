@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:smartapp/Helper/Color.dart';
 import 'package:smartapp/Helper/Session.dart';
 import 'package:smartapp/activity/HomeActivity.dart';
 import 'package:smartapp/activity/onboard/welcome.dart';

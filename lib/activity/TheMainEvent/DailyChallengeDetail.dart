@@ -1,13 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cron/cron.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:flutter_overlay_window/flutter_overlay_window.dart';
 import 'package:intl/intl.dart';
 import 'package:smartapp/Helper/Color.dart';
 import 'package:smartapp/Helper/Constant.dart';

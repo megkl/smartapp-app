@@ -15,26 +15,24 @@ dependencies:
   shared_preferences: ^2.0.6
   google_sign_in: ^5.0.5
   sqflite: ^2.0.0+3
-  connectivity_plus: ^1.0.6
-  flutter_local_notifications: ^8.2.0
+  connectivity_plus: ^6.1.0
   path_provider: 2.0.8
-  share: ^2.0.4
   jaguar_jwt: ^3.0.0
   cupertino_icons: ^1.0.3
   #flutter_inappwebview: ^5.3.2
-  flutter_inappwebview: 5.4.4
+  flutter_inappwebview: 6.1.1
   toast:
   fluttertoast: ^8.0.6
-  assets_audio_player: #^3.0.4+1
-    git:
-      url: https://github.com/luis901101/Flutter-AssetsAudioPlayer.git
-      ref: master
+  assets_audio_player: ^3.0.8
+  # assets_audio_player:
+  #   git:
+  #     url: https://github.com/florent37/Flutter-AssetsAudioPlayer.git
+  #     ref: master
   #webview_flutter: 2.0.10
-  intl: ^0.18.0
+  intl: ^0.19.0
  #flutter_webview_plugin: 0.3.11
   url_launcher: ^6.0.9
   #added to facilitate getting automatic date time
-  device_info: 2.0.0
 #  flutter_hooks: ^0.16.0
 #  hooks_riverpod: ^0.14.0+3
   country_list_pick: ^1.0.1+5
@@ -54,7 +52,7 @@ dependencies:
   cached_network_image: ^3.3.1
   firebase_messaging: ^14.7.3
   google_fonts: ^4.0.4
-  file_picker: ^4.6.1
+  file_picker: ^8.1.4
   photo_view: ^0.14.0
   liquid_progress_indicator_v2: ^0.5.0
   flutter_html: ^3.0.0-beta.2
@@ -66,7 +64,6 @@ dependencies:
   firebase_auth: ^4.16.0
   flutter_overlay_window: ^0.4.3
   badges: ^3.1.2
-
 
 dev_dependencies:
   flutter_test:

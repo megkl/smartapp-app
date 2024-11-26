@@ -625,8 +625,6 @@ class BattleGamePlayActivityState extends State<BattleGamePlayActivity>
             options.add(question!.optionc!);
             options.add(question!.optiond!);
 
-            if (eMode == null) eMode = false;
-
             if (eMode) {
                 if (question!.optione!.isNotEmpty || question!.optione != "")
                     options.add(question!.optione!);
@@ -1393,10 +1391,6 @@ class _SettingDialogState extends State<SettingDialog> {
         bgmusic = (await getPrefrenceBool(Backgroundmusic))!;
         timermusic = (await getPrefrenceBool(TimerSound))!;
         othersound = (await getPrefrenceBool(OtherSound))!;
-
-        if (bgmusic == null) bgmusic = false;
-        if (timermusic == null) timermusic = true;
-        if (othersound == null) othersound = true;
 
 
 

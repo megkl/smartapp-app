@@ -1109,10 +1109,6 @@ class _SettingDialogState extends State<SettingDialog> {
     timermusic = (await getPrefrenceBool(TimerSound))!;
     othersound = (await getPrefrenceBool(OtherSound))!;
 
-    if (bgmusic == null) bgmusic = false;
-    if (timermusic == null) timermusic = true;
-    if (othersound == null) othersound = true;
-
     setState(() {});
   }
 
